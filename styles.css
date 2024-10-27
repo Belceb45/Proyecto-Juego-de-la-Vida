@@ -5,7 +5,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
     box-sizing: border-box;
     text-decoration: none;
     background-color: black;
@@ -15,20 +14,13 @@ header {
     width: 100%;
     height: 20px;
     background: linear-gradient(90deg, #832eff, #fe4ff2);
-    /* Degradado morado a rosa */
     color: white;
-    /* Texto en blanco para hacer buen contraste */
     padding: 5px 10px;
-    /* Añadir algo de relleno */
     font-size: 16px;
-    /* Tamaño de fuente */
     text-align: center;
-    /* Centrar el texto */
-
 }
 
 .autor {
-    
     margin-top: 70px;
     display: flex;
     flex-direction: row;
@@ -38,53 +30,49 @@ header {
 }
 
 .autor h1 {
-    font-family: "Lexend", sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 400;
-    font-style: normal;
     font-size: 23.6px;
     line-height: 23px;
     color: rgb(255, 255, 255);
-
 }
 
 .logo img {
     width: 41.0938px;
     height: 41.0938px;
-    /* Mantiene la proporción original */
     margin-right: 20px;
 }
 
-/*Container*/
-.container{
+/* Container */
+.container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 8rem;
+    flex-wrap: wrap; /* Permite que el contenido se ajuste */
 }
 
-.title{
+.title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 }
 
-.title-neon{
+.title-neon {
     position: relative;
-    width: 600px;
-    height: 300px;
+    max-width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-.title-neon h2{
-    margin-left: 3rem;
+.title-neon h2 {
+    margin: 0;
     text-align: center;
-    font-family: 'Nunito',sans-serif;
-    color:white;
+    font-family: 'Nunito', sans-serif;
+    color: white;
     font-size: 5em;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -93,26 +81,27 @@ header {
                  0 0 30px #b9bcbe,
                  0 0 50px #b9bcbe,
                  0 0 700px #b9bcbe;
+    white-space: normal;
+    word-wrap: break-word;
 }
 
-
-.subtitle h2{
+.subtitle h2 {
     margin-top: 5rem;
-    color: #c71585; /* Color base en un tono morado vibrante */
-    font-size: 3rem; /* Tamaño del texto */
-    font-family: 'Nunito',sans-serif;
+    color: #c71585;
+    font-size: 3rem;
+    font-family: 'Nunito', sans-serif;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-shadow: 0 0 5px #81528e,
-    0 0 10px #81528e,
-    0 0 30px #81528e,
-    0 0 50px #81528e,
-    0 0 700px #81528e;
+                 0 0 10px #81528e,
+                 0 0 30px #81528e,
+                 0 0 50px #81528e,
+                 0 0 700px #81528e;
 }
 
-/*Gif*/
+/* Gif */
 .game {
     display: flex;
     flex-direction: column; /* Para apilar los GIFs verticalmente */
@@ -126,19 +115,18 @@ header {
 }
 
 .gif img {
-     /* Hace que el GIF se ajuste al contenedor */
-     /* Mantiene la proporción de la imagen */
+    max-width: 100%; /* Ajusta el tamaño del GIF para que no exceda el contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
 }
 
 .gif .mod1 {
-    width: 223.438px; /* Ajusta el tamaño del primer GIF */
-    height: 236.453px; /* Mantiene la proporción */
+    max-width: 100%; /* Cambiado para ser responsivo */
+    height: auto; /* Mantiene la proporción */
 }
 
 .gif .mod2 {
-    height: 257.719px; /* Ajusta el tamaño del segundo GIF, más pequeño */
-    width: 257.719px; /* Mantiene la proporción */
-
+    max-width: 100%; /* Cambiado para ser responsivo */
+    height: auto; /* Mantiene la proporción */
 }
 
 .wrapper {
@@ -146,7 +134,6 @@ header {
     justify-content: center;
     align-items: center;
     margin-top: 100px;
-
 }
 
 a {
@@ -156,31 +143,22 @@ a {
     text-transform: uppercase;
     letter-spacing: 4px;
     color: #8f2295;
-    /* Color base en cian */
     font-size: 1.5rem;
     transition: .5s;
     overflow: hidden;
-    
 }
 
 a:hover {
     background-color: #ac46a5;
     color: #050801;
-    /* Cambia el texto a negro cuando se hace hover */
     box-shadow: 0 0 5px #9d40d7,
-        0 0 25px #d74edc,
-        0 0 50px #c743db,
-        0 0 300px #a545a2;
+                0 0 25px #d74edc,
+                0 0 50px #c743db,
+                0 0 300px #a545a2;
     -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
 }
 
-/* Aplicar diferentes colores a cada botón usando hue-rotate */
-
-
-
-
-
-
+/* Efecto de borde animado para los enlaces */
 span {
     position: absolute;
     display: block;
@@ -262,5 +240,57 @@ a span:nth-child(4) {
 
     100% {
         bottom: 100%;
+    }
+}
+
+@media (max-width: 930px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column; /* Cambiado para apilar elementos en pantallas pequeñas */
+        justify-content: center; /* Centra los elementos verticalmente */
+        align-items: center; /* Centra los elementos horizontalmente */
+        margin-top: 9rem;
+    }
+
+    
+
+    .title-neon h2 {
+        margin-left: 0;
+        font-size: 3em; /* Ajusta el tamaño para pantallas más pequeñas */
+        
+    }
+
+    .autor h1 {
+        font-size: 20px; /* Ajusta el tamaño del autor para pantallas pequeñas */
+    }
+
+    a {
+        font-size: 1.2rem; /* Ajusta el tamaño del botón para pantallas pequeñas */
+        padding: 20px; /* Ajusta el padding para pantallas pequeñas */
+    }
+
+    .gif .mod1,
+    .gif .mod2 {
+        margin-top: 5rem;
+    }
+
+    .wrapper{
+        margin-bottom: 10rem;
+    }
+
+    a{
+        background-color: #ac46a5;
+    color: #050801;
+    box-shadow: 0 0 5px #9d40d7,
+                0 0 25px #d74edc,
+                0 0 50px #c743db,
+                0 0 300px #a545a2;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
     }
 }
