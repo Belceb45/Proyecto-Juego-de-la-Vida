@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    background-color: black;
+}
+
+header {
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(90deg, #832eff, #fe4ff2);
+    /* Degradado morado a rosa */
+    color: white;
+    /* Texto en blanco para hacer buen contraste */
+    padding: 5px 10px;
+    /* Añadir algo de relleno */
+    font-size: 16px;
+    /* Tamaño de fuente */
+    text-align: center;
+    /* Centrar el texto */
+
+}
+
+.autor {
+    
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.autor h1 {
+    font-family: "Lexend", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 23.6px;
+    line-height: 23px;
+    color: rgb(255, 255, 255);
+
+}
+
+.logo img {
+    width: 41.0938px;
+    height: 41.0938px;
+    /* Mantiene la proporción original */
+    margin-right: 20px;
+}
+
+/*Container*/
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 8rem;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.title-neon{
+    position: relative;
+    width: 600px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.title-neon h2{
+    margin-left: 3rem;
+    text-align: center;
+    font-family: 'Nunito',sans-serif;
+    color:white;
+    font-size: 5em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 5px #b9bcbe,
+                 0 0 10px #b9bcbe,
+                 0 0 30px #b9bcbe,
+                 0 0 50px #b9bcbe,
+                 0 0 700px #b9bcbe;
+}
+
+
+.subtitle h2{
+    margin-top: 5rem;
+    color: #c71585; /* Color base en un tono morado vibrante */
+    font-size: 3rem; /* Tamaño del texto */
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 5px #81528e,
+    0 0 10px #81528e,
+    0 0 30px #81528e,
+    0 0 50px #81528e,
+    0 0 700px #81528e;
+}
+
+/*Gif*/
+.game {
+    display: flex;
+    flex-direction: column; /* Para apilar los GIFs verticalmente */
+    align-items: center; /* Centra los GIFs horizontalmente */
+}
+
+.gif {
+    display: block;
+    direction: ltr;
+    height: auto;
+}
+
+.gif img {
+     /* Hace que el GIF se ajuste al contenedor */
+     /* Mantiene la proporción de la imagen */
+}
+
+.gif .mod1 {
+    width: 223.438px; /* Ajusta el tamaño del primer GIF */
+    height: 236.453px; /* Mantiene la proporción */
+}
+
+.gif .mod2 {
+    height: 257.719px; /* Ajusta el tamaño del segundo GIF, más pequeño */
+    width: 257.719px; /* Mantiene la proporción */
+
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+
+}
+
+a {
+    position: relative;
+    display: inline-block;
+    padding: 25px 30px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #8f2295;
+    /* Color base en cian */
+    font-size: 1.5rem;
+    transition: .5s;
+    overflow: hidden;
+    
+}
+
+a:hover {
+    background-color: #ac46a5;
+    color: #050801;
+    /* Cambia el texto a negro cuando se hace hover */
+    box-shadow: 0 0 5px #9d40d7,
+        0 0 25px #d74edc,
+        0 0 50px #c743db,
+        0 0 300px #a545a2;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+/* Aplicar diferentes colores a cada botón usando hue-rotate */
+
+
+
+
+
+
+span {
+    position: absolute;
+    display: block;
+}
+
+span:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #b84cbc);
+    animation: animate1 1s infinite;
+}
+
+@keyframes animate1 {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+a span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #b84cbc);
+    animation: animate2 1s infinite;
+    animation-delay: .25s;
+}
+
+@keyframes animate2 {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+a span:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(270deg, transparent, #b84cbc);
+    animation: animate3 1s infinite;
+    animation-delay: .5s;
+}
+
+@keyframes animate3 {
+    0% {
+        right: -100%;
+    }
+
+    100% {
+        right: 100%;
+    }
+}
+
+a span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #b84cbc);
+    animation: animate4 1s infinite;
+    animation-delay: .75s;
+}
+
+@keyframes animate4 {
+    0% {
+        bottom: -100%;
+    }
+
+    100% {
+        bottom: 100%;
+    }
+}
