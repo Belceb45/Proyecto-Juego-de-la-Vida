@@ -115,18 +115,21 @@ header {
 }
 
 .gif img {
-    max-width: 100%; /* Ajusta el tamaño del GIF para que no exceda el contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
+    margin-top: 5rem;
+
+    /* Hace que el GIF se ajuste al contenedor */
+    /* Mantiene la proporción de la imagen */
 }
 
 .gif .mod1 {
-    max-width: 100%; /* Cambiado para ser responsivo */
-    height: auto; /* Mantiene la proporción */
+   width: 223.438px; /* Ajusta el tamaño del primer GIF */
+   height: 236.453px; /* Mantiene la proporción */
 }
 
 .gif .mod2 {
-    max-width: 100%; /* Cambiado para ser responsivo */
-    height: auto; /* Mantiene la proporción */
+   height: 257.719px; /* Ajusta el tamaño del segundo GIF, más pequeño */
+   width: 257.719px; /* Mantiene la proporción */
+
 }
 
 .wrapper {
@@ -258,12 +261,13 @@ a span:nth-child(4) {
         margin-top: 9rem;
     }
 
-    
+    .subtitle {
+        margin-top: 0;
+    }
 
     .title-neon h2 {
         margin-left: 0;
         font-size: 3em; /* Ajusta el tamaño para pantallas más pequeñas */
-        
     }
 
     .autor h1 {
@@ -278,10 +282,17 @@ a span:nth-child(4) {
     .gif .mod1,
     .gif .mod2 {
         margin-top: 5rem;
+        
     }
 
+    .gif{
+        display: flex;
+    
+    }
+    
     .wrapper{
         margin-bottom: 10rem;
+        
     }
 
     a{
