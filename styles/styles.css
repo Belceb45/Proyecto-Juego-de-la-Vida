@@ -282,12 +282,12 @@ a span:nth-child(4) {
     .gif .mod1,
     .gif .mod2 {
         margin-top: 5rem;
-        
-    }
+        height: 190px;
+        width: 190px;
+    }   
 
     .gif{
         display: flex;
-    
     }
     
     .wrapper{
