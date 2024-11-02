@@ -7,10 +7,13 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    background-color: black;
 }
 
-header {
+body{
+    background-color:#050801;
+}
+
+.borde{
     width: 100%;
     height: 20px;
     background: linear-gradient(90deg, #832eff, #fe4ff2);
@@ -19,6 +22,8 @@ header {
     font-size: 16px;
     text-align: center;
 }
+
+
 
 .autor {
     margin-top: 70px;
@@ -50,7 +55,9 @@ header {
     justify-content: space-around;
     margin-top: 8rem;
     flex-wrap: wrap; /* Permite que el contenido se ajuste */
+    margin-bottom: 11.3rem;
 }
+
 
 .title {
     display: flex;
@@ -80,10 +87,11 @@ header {
                  0 0 10px #b9bcbe,
                  0 0 30px #b9bcbe,
                  0 0 50px #b9bcbe,
-                 0 0 700px #b9bcbe;
+                 0 0 70px #b9bcbe;
     white-space: normal;
     word-wrap: break-word;
 }
+
 
 .subtitle h2 {
     margin-top: 5rem;
@@ -139,7 +147,7 @@ header {
     margin-top: 100px;
 }
 
-a {
+.wrapper a{
     position: relative;
     display: inline-block;
     padding: 25px 30px;
@@ -151,7 +159,7 @@ a {
     overflow: hidden;
 }
 
-a:hover {
+.wrapper a:hover {
     background-color: #ac46a5;
     color: #050801;
     box-shadow: 0 0 5px #9d40d7,
@@ -162,12 +170,12 @@ a:hover {
 }
 
 /* Efecto de borde animado para los enlaces */
-span {
+.wrapper span {
     position: absolute;
     display: block;
 }
 
-span:nth-child(1) {
+.wrapper span:nth-child(1) {
     top: 0;
     left: 0;
     width: 100%;
@@ -186,7 +194,7 @@ span:nth-child(1) {
     }
 }
 
-a span:nth-child(2) {
+.wrapper a span:nth-child(2) {
     top: -100%;
     right: 0;
     width: 1px;
@@ -206,7 +214,7 @@ a span:nth-child(2) {
     }
 }
 
-a span:nth-child(3) {
+.wrapper a span:nth-child(3) {
     bottom: 0;
     right: 0;
     width: 100%;
@@ -226,7 +234,7 @@ a span:nth-child(3) {
     }
 }
 
-a span:nth-child(4) {
+.wrapper a span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 1px;
@@ -259,6 +267,7 @@ a span:nth-child(4) {
         justify-content: center; /* Centra los elementos verticalmente */
         align-items: center; /* Centra los elementos horizontalmente */
         margin-top: 9rem;
+        margin-bottom: 0;
     }
 
     .subtitle {
@@ -274,7 +283,7 @@ a span:nth-child(4) {
         font-size: 20px; /* Ajusta el tamaño del autor para pantallas pequeñas */
     }
 
-    a {
+    .wrapper a {
         font-size: 1.2rem; /* Ajusta el tamaño del botón para pantallas pequeñas */
         padding: 20px; /* Ajusta el padding para pantallas pequeñas */
     }
@@ -295,8 +304,8 @@ a span:nth-child(4) {
         
     }
 
-    a{
-        background-color: #ac46a5;
+    .wrapper a{
+    background-color: #ac46a5;
     color: #050801;
     box-shadow: 0 0 5px #9d40d7,
                 0 0 25px #d74edc,
@@ -304,4 +313,222 @@ a span:nth-child(4) {
                 0 0 300px #a545a2;
     -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
     }
+}
+
+
+/*CSS Pagina 2*/
+
+/*Tabla*/
+.tabla{
+    height: 500px;
+    width: 1200px;
+    border-radius: 15px;
+    background-color: white;
+    border: 10px solid #b84cbc;
+}
+
+.menu {
+    height: 500px;
+    width: 300px;
+    border-radius: 5px;
+    border: 6px solid #b84cbc;
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; /* Centra los elementos horizontalmente */
+}
+
+.menu h1{
+    background-color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.3em;
+    margin-bottom: 1rem;
+}
+
+.custom-select-menu {
+    position: relative;
+    width: 250px;
+}
+
+/* Caja principal */
+.select-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    color: #050801;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+.selected-option{
+    font-family: 'Nunito', sans-serif; /* Cambia la fuente */
+    font-size: 1.2em; /* Cambia el tamaño de la fuente */
+    color: #3f0c0c; /* Cambia el color */
+    background-color: white;
+}
+
+.select-box::before {
+    content: '';
+    position: absolute;
+    top: -5px; /* Ajusta el espacio del borde superior */
+    left: -5px; /* Ajusta el espacio del borde izquierdo */
+    right: -5px; /* Ajusta el espacio del borde derecho */
+    bottom: -5px; /* Ajusta el espacio del borde inferior */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: transparent; /* Fondo del borde */
+    box-shadow: 0 0 5px #9d40d7,
+                0 0 25px #d74edc;
+    z-index: -1; /* Asegúrate de que esté detrás del botón */
+}
+
+.select-box:hover {
+    color: #3f0c0c; /* Cambia el color del texto al pasar el ratón */
+}
+
+/* Icono */
+.select-box i {
+    margin-left: 10px;
+}
+
+/* Caja de opciones */
+.options {
+    position: absolute;
+    margin-top: 1rem;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 0 0 2px #9d40d7;
+    max-height: 0; /* Colapsado inicialmente */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 10;
+}
+
+.options.open {
+    max-height: 250px; /* Define un alto suficiente para que las opciones sean visibles */
+    transition: max-height 0.4s ease;
+
+}
+
+.option {
+    font-family: 'Nunito', sans-serif; /* Cambia la fuente */
+    font-size: 1em; /* Cambia el tamaño de la fuente */
+    color: #050801; /* Color de texto de las opciones */
+    padding: 10px; /* Espaciado dentro de la opción */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.option:hover {
+    background-color: #d74edc;
+    color: #fff;
+}
+
+
+/*Seccion que ejecuta el juego*/
+.ejecutar-h1{
+    margin-top: 2.5rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    display: none;
+    /* Ocultar el checkbox real */
+}
+
+.checkbox-label {
+    position: relative;
+    padding-left: 30px;
+    /* Espacio para el cuadrado */
+    cursor: pointer;
+    font-size: 1rem;
+    /* Cambia el tamaño de la fuente si lo deseas */
+}
+
+.checkbox-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    /* Ancho del cuadrado */
+    height: 30px;
+    /* Altura del cuadrado */
+    /* border: 2px solid #c71585; */
+    box-shadow: 0 0 5px #9d40d7,
+                0 0 25px #d74edc;
+    /* Color del borde */
+    border-radius: 4px;
+    /* Esquinas redondeadas */
+    background-color: white;
+    /* Color de fondo */
+}
+
+.checkbox:checked+.checkbox-label::before {
+    background-color: #d74edc;
+    /* Color de fondo cuando está marcado */
+    border-color: #d74edc;
+    /* Color del borde cuando está marcado */
+}
+
+.checkbox:checked+.checkbox-label::after {
+    content: '✓';
+    /* Marca de verificación */
+    position: absolute;
+    left: 6px;
+    /* Ajusta la posición horizontal de la marca */
+    top: -2px;
+    /* Ajusta la posición vertical de la marca */
+    color: white;
+    /* Color de la marca de verificación */
+    font-size: 23px;
+    /* Tamaño de la marca de verificación */
+
+}
+
+.options-container{
+    margin-top: 3rem;
+    margin-left: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-options{
+    margin-top: 20px;
+    height: 50px;
+    width: 200px;
+    border-radius: 50px;
+    background-color: none;
+    border-color: #d74edc;
+    box-shadow: 0 0 5px #9d40d7,
+                0 0 25px #d74edc;
+    cursor: pointer;
+    color: #d74edc;
+    text-shadow: 0 0 5px #d74edc;
+ 
+}
+
+.repo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-brands{
+    margin-left: 15px;
+    font-size: 1.5rem;
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script type="text/javascript" src="scripts/main.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Interzaf de Juego</title>
+</head>
+
+<body>
+    <header class="borde"></header>
+    <div class="title-neon">
+        <h2>JUEGO DE LA VIDA</h2>
+    </div>
+    <div class="container ">
+        <div class="tabla"></div>
+        <div class="menu">
+            <h1>PROGRAMAR</h1>
+            <div class="custom-select-menu">
+                <div class="select-box" onclick="toggleOptions()">
+                    <span class="selected-option">Seleccione una opción</span>
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption('Propia')">Propia</div>
+                    <div class="option" onclick="selectOption('Glider')">Glider</div>
+                    <div class="option" onclick="selectOption('Pulsar')">Pulsar</div>
+                    <div class="option" onclick="selectOption('Spaceship')">Spaceship</div>
+                    <div class="option" onclick="selectOption('Circle of Fire')">Circle of Fire</div>
+                    <div class="option" onclick="selectOption('Quadpole')">Quadpole</div>
+   
+                </div>
+            </div>
+            <h1 class="ejecutar-h1">EJECUTAR</h1>
+            <div class="checkbox-container">
+                <input type="checkbox" id="myCheckbox" class="checkbox">
+                <label for="myCheckbox" class="checkbox-label"></label>
+            </div>
+            <div class="options-container">
+                <button class="button-options">UNO A UNO</button>
+                <button class="button-options">LIMPIAR</button>
+                <button class="button-options">
+                    <a href="https://github.com/Belceb45/Proyecto-Juego-de-la-Vida.git" class="repo">
+                        REPOSITORIO<i class="fa-brands fa-github"></i>
+                    </a>
+                </button>
+                
+            </div>
+        </div>
+    </div>
+
+    <footer class="borde"></footer>
+
+</body>
+
+</html>
