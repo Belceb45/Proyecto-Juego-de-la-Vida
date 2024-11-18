@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   tituloh2.style.fontSize = '3rem';
 
   const container = document.querySelector('.container');
-  container.style.marginBottom = '9.1rem';
+  container.style.marginBottom = '2rem';
 
   
   
