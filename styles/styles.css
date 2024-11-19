@@ -81,7 +81,7 @@ button#playMusic{
     display: inline-block;
     width: 45px;
     height: 45px;
-    background-image: url('/JavaFullStack/Modulo2/Proyecto-Modulo-2/images/encendido.png');
+    background-image: url('images/encendido.png');
     background-size: cover;
     background-position: center;
     transition: background-img 0.3s ease;
