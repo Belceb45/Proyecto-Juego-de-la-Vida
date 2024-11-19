@@ -64,7 +64,17 @@ for (let i = 0; i < filas; i++) {
   }
   tabla.appendChild(fila);
 }
-//
+// Funcion que limpia el tablero
+function limpiarTablero() {
+  // Limpiar la matriz
+  matriz.forEach((fila, i) => fila.forEach((_, j) => matriz[i][j] = 0));
+
+  // Limpiar visualmente el tablero
+  const celdas = document.querySelectorAll("#tb td");
+  celdas.forEach(celda => celda.classList.remove("selected"));
+
+  console.log("Tablero limpiado");
+}
 
 
 // Obtener el botón "Limpiar" por su clase
@@ -72,23 +82,10 @@ const cleanButton = document.querySelector(".button-options.clean");
 
 // Añadir un evento para limpiar la tabla y reiniciar la matriz
 cleanButton.addEventListener("click", function () {
-    // Seleccionar todas las celdas de la tabla
-    const celdas = document.querySelectorAll("#tb td");
-    
-    // Limpiar visualmente las celdas (remover la clase "selected")
-    celdas.forEach(celda => {
-        celda.classList.remove("selected");
-    });
-
-    // Reiniciar la matriz del juego a 0
-    for (let i = 0; i < filas; i++) {
-        for (let j = 0; j < columnas; j++) {
-            matriz[i][j] = 0;
-        }
-    }
-
-    console.log("Tabla y matriz reiniciadas.");
+  // Seleccionar todas las celdas de la tabla
+  limpiarTablero();
 });
+
 
 
 // Función que calcula la próxima generación
@@ -142,7 +139,7 @@ function siguienteGeneracion() {
 function contarVecinosVivos(i, j) {
   const vecinos = [
     [-1, -1], [-1, 0], [-1, 1],
-    [0, -1],          [0, 1],
+    [0, -1], [0, 1],
     [1, -1], [1, 0], [1, 1]
   ];
 
@@ -168,20 +165,20 @@ const checkbox = document.getElementById("myCheckbox"); // Seleccionar el checkb
 
 // Evento change para controlar el inicio y detención del juego
 checkbox.addEventListener("change", function () {
-    if (checkbox.checked) {
-        // Iniciar el juego
-        gameInterval = setInterval(siguienteGeneracion, 100); // Ejecutar cada 500 ms
-        console.log("Juego iniciado");
-    } else {
-        // Detener el juego
-        clearInterval(gameInterval);
-        console.log("Juego detenido");
-    }
+  if (checkbox.checked) {
+    // Iniciar el juego
+    gameInterval = setInterval(siguienteGeneracion, 100); // Ejecutar cada 500 ms
+    console.log("Juego iniciado");
+  } else {
+    // Detener el juego
+    clearInterval(gameInterval);
+    console.log("Juego detenido");
+  }
 });
 
 //Iniciar el juego uno a uno
-const oneForOne=document.querySelector(".button-options.one");
-oneForOne.addEventListener("click", function(){
+const oneForOne = document.querySelector(".button-options.one");
+oneForOne.addEventListener("click", function () {
   siguienteGeneracion();
 });
 
@@ -198,3 +195,50 @@ function selectOption(optionText) {
 }
 
 
+//Patrones prediseñados
+function selectOption(pattern) {
+  limpiarTablero(); // Limpia el tablero antes de aplicar un patrón
+
+  const patrones = {
+    'Glider': [
+      // Coordenadas del Glider
+      [10, 26], [11, 27], [11, 28], [10, 28], [12, 27]
+    ],
+    'Pulsar': [
+      // Coordenadas de Pulsar
+      [6, 23], [7, 23], [8, 23], [8, 24], [8, 28], [8, 29], [7, 29], [6, 29], [10, 24], [10, 25], [11, 25], [10, 27], [10, 28], [11, 27], [11, 23], [12, 23]
+      , [12, 24], [12, 28], [12, 29], [11, 29], [11, 21], [10, 21], [10, 20], [10, 19], [11, 31], [10, 31], [10, 32], [10, 33], [14, 23], [14, 24], [15, 23],
+      [16, 24], [16, 25], [15, 25], [15, 27], [16, 27], [16, 28], [14, 28], [14, 29], [15, 29], [16, 21], [15, 21], [16, 20], [16, 19], [15, 31], [16, 31], [16, 32],
+      [16, 33], [18, 24], [18, 23], [19, 23], [20, 23], [18, 28], [18, 29], [19, 29], [20, 29]
+    ],
+    'Spaceship': [
+      // Coordenadas de Spaceship
+      [9, 28], [9, 29], [10, 27], [10, 28], [10, 29], [10, 30], [11, 27], [11, 28], [11, 30], [11, 31], [12, 30], [12, 29]
+    ],
+    'Circle of Fire': [
+      // Coordenadas de Circle of Fire
+      [11, 24],[11, 25],[11, 26],[11, 27],[11, 28],[10, 29],[11, 30],[12, 29],[9, 29], [8, 29], [7, 29], [13, 29],
+      [14, 29],[15, 29],[11, 31],[11, 32],[11, 33],[11, 34],[9, 31], [8, 31], [9, 32], [7, 32], [6, 30], [6, 28], [9, 27], [8, 27], [9, 33], [9, 26], [9, 25], [7, 26], [13, 27],
+      [14, 27],[13, 26],[13, 25],[15, 26],[16, 28],[16, 30],[14, 31],[13, 31],[13, 32],[13, 33],[15, 32]
+    
+    ],
+    'Quadpole': [
+      // Coordenadas de Quadpole
+      [8, 23],[9, 23],[8, 24],[9, 25],[11, 25],[11, 27],[13, 27],[14, 28],[14, 29],[13, 29]
+
+    ],
+  };
+
+  const coords = patrones[pattern] || [];
+  coords.forEach(([i, j]) => {
+    matriz[i][j] = 1; // Cambiar el estado de la matriz
+    const celda = document.querySelector(`#tb tr:nth-child(${i + 1}) td:nth-child(${j + 1})`);
+    if (celda) celda.classList.add("selected"); // Cambiar el estado visual
+  });
+
+  console.log(`Patrón ${pattern} configurado.`);
+
+  // Cerrar el menú
+  const optionsContainer = document.querySelector(".options");
+  optionsContainer.classList.remove("open");
+}
