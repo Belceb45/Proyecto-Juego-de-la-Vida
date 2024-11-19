@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@font-face {
+    font-family: Retro;
+    src: url('/JavaFullStack/Modulo2/Proyecto-Modulo-2/fonts/pixel-game-font/PixelGame-R9AZe.otf') format('opentype');
+}
 
 
 @view-transition{
@@ -23,6 +27,7 @@
 
 body{
     background-color:#050801;
+    
 }
 
 .borde{
@@ -36,12 +41,20 @@ body{
 }
 
 
-
 .autor {
-    margin-top: 70px;
+    margin-top: 67px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.autor2{
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     color: white;
 }
@@ -52,12 +65,42 @@ body{
     font-size: 23.6px;
     line-height: 23px;
     color: rgb(255, 255, 255);
+
+}
+
+/*icono de sonido*/
+button#playMusic{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    
+}
+
+
+.sound{
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-image: url('/JavaFullStack/Modulo2/Proyecto-Modulo-2/images/encendido.png');
+    background-size: cover;
+    background-position: center;
+    transition: background-img 0.3s ease;
+ 
+    
+}
+
+.logo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo img {
     width: 41.0938px;
     height: 41.0938px;
     margin-right: 20px;
+
+    
 }
 
 /* Container */
@@ -585,3 +628,69 @@ body{
 .min-margin{
     margin-top: 0;
 }
+
+/*Input rango*/
+.container-explain h2{
+    margin-left: 30px;
+    font-size: 1.4em;
+    color: white;
+    font-family: 'Nunito', sans-serif; /* Cambia la fuente */
+    text-shadow: 0 0 10px #d74edc;
+    
+}
+
+
+.middle {
+    margin-left: 100px;
+	width: 50%;
+	max-width: 250px;
+
+}
+.slider-container {
+	position: relative;
+}
+.slider-container .bar {
+	position: absolute;
+	z-index: 1;
+	left: 2px;
+	top: 7px;
+	width: 100%;
+	height: 10px;
+	border-radius: 5px;
+	background-color: #d74edc;
+	overflow: hidden;
+}
+.slider-container .bar .fill {
+	display: block;
+	width: 0;
+	height: 100%;
+	background-color: #6200ee;
+}
+.slider-container .slider {
+	position: relative;
+	z-index: 2;
+	-webkit-appearance: none;
+	width: 100%;
+	height: 10px;
+	border-radius: 5px;
+	outline: none;
+	background-color: transparent;
+}
+.slider-container .slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 25px;
+	height: 25px;
+	background-color: #6200ee;
+	border-radius: 50%;
+	cursor: pointer;
+	outline: none;
+	box-shadow: 0 0 0 0 rgba(184,76,188,.1);
+	transition: .3s ease-in-out;
+}
+.slider-container .slider::-webkit-slider-thumb:hover {
+	box-shadow: 0 0 0 10px rgba(184,76,188,.1);
+}
+.slider-container .slider:active::-webkit-slider-thumb {
+	box-shadow: 0 0 0 25px rgba(184,76,188,.2);
+}
+
