@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styles.css">
-    <script type="text/javascript" src="scripts/main.js"></script>
+    <script defer type="text/javascript" src="scripts/main.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -19,7 +19,9 @@
         <h2>JUEGO DE LA VIDA</h2>
     </div>
     <div class="container ">
-        <div class="tabla"></div>
+        <div class="tabla">
+            <table id="tb"></table>
+        </div>
         <div class="menu">
             <h1>PROGRAMAR</h1>
             <div class="custom-select-menu">
@@ -42,8 +44,8 @@
                 <label for="myCheckbox" class="checkbox-label"></label>
             </div>
             <div class="options-container">
-                <button class="button-options">UNO A UNO</button>
-                <button class="button-options">LIMPIAR</button>
+                <button class="button-options one">UNO A UNO</button>
+                <button class="button-options clean">LIMPIAR</button>
                 <button class="button-options">
                     <a href="https://github.com/Belceb45/Proyecto-Juego-de-la-Vida.git" class="repo">
                         REPOSITORIO<i class="fa-brands fa-github"></i>

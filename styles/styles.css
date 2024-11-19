@@ -332,12 +332,38 @@ body{
 
 /*Tabla*/
 .tabla{
-    height: 500px;
+   
     width: 1200px;
+    height: 505px;
     border-radius: 15px;
     background-color: white;
     border: 10px solid #b84cbc;
+    overflow: auto;
 }
+
+#tb{
+    width: auto;
+    border-collapse:collapse;
+}
+
+#tb td{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    height: 5px;
+    min-width: 5px;
+}
+
+#tb td.selected{
+    background-color: #b84cbc;
+    color: white;
+}
+
+#tb td:hover{
+    transition: all 0s;
+    background-color: #ac46a5;
+}
+
 
 .menu {
     height: 500px;
@@ -552,7 +578,7 @@ body{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3.7rem;
     margin-left: 36rem;
 }
 
