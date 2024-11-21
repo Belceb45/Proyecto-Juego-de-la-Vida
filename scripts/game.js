@@ -160,22 +160,8 @@ function contarVecinosVivos(i, j) {
   return count;
 }
 
-const slider = document.getElementById("slider"); // Referencia al slider
-let gameInterval; // Variable global para el intervalo del juego
-
-// Escucha los cambios en el slider
-slider.addEventListener("input", function () {
-    const speed = parseInt(slider.value); // Obtiene el valor del slider como entero
-    console.log(`Velocidad ajustada a: ${speed} ms`);
-
-    if (gameInterval) {
-        clearInterval(gameInterval); // Detén el intervalo actual
-        gameInterval = setInterval(siguienteGeneracion, speed); // Inicia con la nueva velocidad
-    }
-});
 
 const checkbox = document.getElementById("myCheckbox"); // Referencia al checkbox
-
 // Evento para iniciar o detener el juego
 checkbox.addEventListener("change", function () {
     if (checkbox.checked) {
@@ -187,6 +173,21 @@ checkbox.addEventListener("change", function () {
         console.log("Juego detenido");
     }
 });
+
+const slider = document.getElementById("slider"); // Referencia al slider
+let gameInterval; // Variable global para el intervalo del juego
+
+// Escucha los cambios en el slider
+slider.addEventListener("input", function () {
+    const speed = parseInt(slider.value); // Obtiene el valor del slider como entero
+    console.log(`Velocidad ajustada a: ${speed} ms`);
+
+    if (gameInterval && checkbox.checked) {
+        clearInterval(gameInterval); // Detén el intervalo actual
+        gameInterval = setInterval(siguienteGeneracion, speed); // Inicia con la nueva velocidad
+    }
+});
+
 
 //Iniciar el juego uno a uno
 const oneForOne = document.querySelector(".button-options.one");
