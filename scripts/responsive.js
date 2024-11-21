@@ -1,148 +1,215 @@
+// Función para manejar orientación vertical
+function vertical() {
+    const elements = {
+        playMusic: document.getElementById('playMusic'),
+        container: document.querySelector('.container'),
+        containerExplain: document.querySelector('.container-explain'),
+        body: document.body,
+        titleNeon: document.querySelector('.title-neon'),
+        title: document.querySelector('.title-neon h2'),
+        footer: document.querySelector('footer')
+    };
+
+    // Guardar los estilos originales si aún no se han guardado
+    if (!window.originalStyles) {
+        window.originalStyles = {
+            body: elements.body.getAttribute('style') || '',
+            titleNeon: elements.titleNeon.getAttribute('style') || '',
+            title: elements.title.getAttribute('style') || ''
+        };
+    }
+
+    // Ocultar elementos no necesarios en vertical
+    elements.playMusic.style.display = 'none';
+    elements.container.style.display = 'none';
+    elements.containerExplain.style.display = 'none';
+
+
+    // Configurar el body para la vista vertical
+    elements.body.style.cssText = window.originalStyles.body;
+    elements.body.style.display = 'grid';
+    elements.body.style.minHeight = '100vh';
+    elements.body.style.gridTemplateRows = 'auto 1fr auto';
+    elements.body.style.placeItems = 'center';
+
+    // Configurar el título
+    elements.titleNeon.style.cssText = window.originalStyles.titleNeon;
+    elements.titleNeon.style.display = 'flex';
+    elements.titleNeon.style.flexDirection = 'column';
+    elements.title.style.cssText = window.originalStyles.title;
+    elements.title.textContent = 'Para jugar debes rotar el celular';
+    elements.title.style.marginBottom = '0';
+
+    // Verificar si la imagen ya está en el DOM antes de agregarla
+    let rotateImage = document.querySelector('.rotate-image');
+    if (!rotateImage) {
+        rotateImage = document.createElement('img');
+        rotateImage.src = './images/rotate.png';
+        rotateImage.alt = 'Rotar el dispositivo';
+        rotateImage.classList.add('rotate-image');
+        elements.title.insertAdjacentElement('afterend', rotateImage);
+    }
+    // Asegurarse de que la imagen sea visible
+    rotateImage.style.display = 'block';
+    rotateImage.style.marginTop = '50px';
+    rotateImage.style.width = '300px';
+    rotateImage.style.height = '300px';
+
+    // Ocultar elementos específicos de la orientación horizontal
+    const horizontalElements = document.querySelectorAll('.horizontal-only');
+    horizontalElements.forEach(el => el.style.display = 'none');
+}
+
+// Función para manejar orientación horizontal
+function horizontal() {
+    const elements = {
+        playMusic: document.getElementById('playMusic'),
+        container: document.querySelector('.container'),
+        containerExplain: document.querySelector('.container-explain'),
+        body: document.body,
+        titleNeon: document.querySelector('.title-neon'),
+        title: document.querySelector('.title-neon h2'),
+        borde: document.querySelector('.borde'),
+        tabla: document.querySelector('.tabla'),
+        menu: document.querySelector('.menu'),
+        optionsContainer: document.querySelector('.options-container'),
+        footer: document.querySelector('footer')
+    };
+
+    // Restaurar estilos originales
+    if (window.originalStyles) {
+        elements.body.style.cssText = window.originalStyles.body;
+        elements.titleNeon.style.cssText = window.originalStyles.titleNeon;
+        elements.title.style.cssText = window.originalStyles.title;
+    }
+
+    // Mostrar elementos que se ocultaron en vertical
+    elements.playMusic.style.display = '';
+    elements.container.style.display = '';
+    elements.containerExplain.style.display = '';
+    elements.footer.style.display = '';
+
+    // Ocultar la imagen de rotación
+    const rotateImage = document.querySelector('.rotate-image');
+    if (rotateImage) {
+        rotateImage.style.display = 'none';
+    }
+
+    // Configurar estilos para orientación horizontal
+    elements.borde.style.height = '7px';
+    elements.titleNeon.style.marginTop = '7px';
+    elements.title.style.fontSize = '30px';
+    elements.container.style.marginTop = '10px';
+    elements.container.style.marginBottom = '5px';
+    elements.tabla.style.width = '60%';
+    elements.tabla.style.height = '300px';
+
+    // Configurar el menú
+    if (elements.menu) {
+        elements.menu.style.height = '310px';
+        const menuElements = {
+            title: elements.menu.querySelector('h1'),
+            options: elements.menu.querySelector('.options'),
+            selectedOption: elements.menu.querySelector('.selected-option'),
+            ejecutarH1: elements.menu.querySelector('.ejecutar-h1')
+        };
+
+        menuElements.title.style.fontSize = '15px';
+        menuElements.options.style.fontSize = '14px';
+        menuElements.selectedOption.style.fontSize = '15px';
+        menuElements.ejecutarH1.style.fontSize = '15px';
+        menuElements.ejecutarH1.style.marginTop = '15px';
+        menuElements.ejecutarH1.style.marginBottom = '5px';
+    }
+
+    // Configurar el contenedor de opciones
+    if (elements.optionsContainer) {
+        elements.optionsContainer.style.marginLeft = '0';
+        elements.optionsContainer.style.top = '0';
+        elements.optionsContainer.style.display = 'flex';
+        elements.optionsContainer.style.flexDirection = 'row';
+        elements.optionsContainer.style.gap = '40px';
+
+        const buttons = elements.optionsContainer.querySelectorAll('.button-options');
+        buttons.forEach((button, i) => {
+            button.style.width = '100px';
+            button.style.marginTop = '0';
+            button.style.height = '40px';
+            button.style.fontSize = '10px';
+            if (i === 2) {
+                button.style.display = 'none';
+            }
+        });
+
+        // Crear el botón de repositorio si no existe
+        if (!document.querySelector('.repo-button')) {
+            const nuevoBoton = createRepoButton();
+            elements.optionsContainer.insertAdjacentElement('afterend', nuevoBoton);
+        }
+    }
+
+    elements.containerExplain.style.marginLeft = '40px';
+    elements.containerExplain.style.marginBottom = '0';
+    document.querySelector('.middle').style.marginLeft = '30px';
+}
+
+// Función para crear el botón de repositorio
+function createRepoButton() {
+    const nuevoBoton = document.createElement('button');
+    nuevoBoton.classList.add('repo-button');
+    Object.assign(nuevoBoton.style, {
+        width: '140px',
+        marginTop: '15px',
+        marginLeft: '50px',
+        height: '40px',
+        fontSize: '10px',
+        borderRadius: '50px',
+        backgroundColor: 'transparent',
+        borderColor: '#d74edc',
+        boxShadow: '0 0 5px #9d40d7, 0 0 25px #d74edc',
+        cursor: 'pointer',
+        color: '#d74edc',
+        textShadow: '0 0 5px #d74edc'
+    });
+
+    const enlace = document.createElement('a');
+    enlace.href = "https://github.com/Belceb45/Proyecto-Juego-de-la-Vida.git";
+    enlace.classList.add('repo');
+    enlace.textContent = "REPOSITORIO ";
+
+    const iconoGitHub = document.createElement('i');
+    iconoGitHub.classList.add('fa-brands', 'fa-github');
+
+    enlace.appendChild(iconoGitHub);
+    nuevoBoton.appendChild(enlace);
+    return nuevoBoton;
+}
+
 // Función para detectar si es un dispositivo móvil
 function esDispositivoMovil() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
     return /android|ipad|iphone|ipod|blackberry|windows phone|opera mini|webos/i.test(userAgent);
 }
 
-// Ejecutar el código solo si es un dispositivo móvil
-if (esDispositivoMovil()) {
-    // Detectar orientación actual y ejecutar la función correspondiente
-    if (window.matchMedia("(orientation: portrait)").matches) {
-        vertical();
-    } else {
-        horizontal();
-    }
-
-    // Registrar evento para detectar cambio de orientación
-    window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
-        const portrait = e.matches;
-
-        if (portrait) {
+// Función principal para manejar la orientación
+function manejarOrientacion() {
+    // Pequeño retraso para asegurar que el DOM se ha actualizado
+    setTimeout(() => {
+        if (window.matchMedia("(orientation: portrait)").matches) {
             console.log("Portrait");
             vertical();
         } else {
             console.log("Landscape");
             horizontal();
         }
-    });
+    }, 100); // 100ms de retraso
 }
 
-// Función para manejar orientación vertical
-function vertical() {
-    // Cambiar elementos visuales para orientación vertical
-    document.getElementById('playMusic').style.display = 'none';
-    document.querySelector('.container').style.display = 'none';
-    document.querySelector('.container-explain').style.display = 'none';
-    document.body.style.display = 'grid';
-    document.body.style.minHeight = '100vh';
-    document.body.style.gridTemplateRows = 'auto 1fr auto';
-    document.body.style.placeItems = 'center';
-    document.querySelector('.title-neon').style.display = 'flex';
-    document.querySelector('.title-neon').style.flexDirection = 'column';
-    const title = document.querySelector('.title-neon h2');
-    title.textContent = 'Para jugar debes rotar el celular';
-    title.style.marginBottom = '0';
+// Ejecutar el código solo si es un dispositivo móvil
+if (esDispositivoMovil()) {
+    // Detectar orientación inicial y ejecutar la función correspondiente
+    manejarOrientacion();
 
-    // Verificar si la imagen ya está en el DOM antes de agregarla
-    if (!document.querySelector('.rotate-image')) {
-        const nuevaImagen = document.createElement('img');
-        nuevaImagen.src = './images/rotate.png';
-        nuevaImagen.style.marginTop = '50px';
-        nuevaImagen.alt = 'Descripción de la imagen'; // Alt para accesibilidad
-        nuevaImagen.style.width = '300px'; // Opcional: aplicar estilos
-        nuevaImagen.style.height = '300px'; // Opcional: aplicar estilos
-        nuevaImagen.classList.add('rotate-image'); // Añadir clase para evitar duplicados
-        title.insertAdjacentElement('afterend', nuevaImagen);
-    }
-}
-
-// Función para manejar orientación horizontal
-function horizontal() {
-    console.log("Restaurando para orientación horizontal...");
-
-    // Forzar reflujo (ejecutar una acción que fuerce la actualización de los estilos)
-    document.body.offsetHeight; // Esto fuerza el reflujo
-
-    document.querySelector('.borde').style.height = '7px';
-
-    const title = document.querySelector('.title-neon');
-    title.style.marginTop = '7px';
-
-    const titleNeon = document.querySelector('.title-neon h2');
-    titleNeon.style.fontSize = '30px';
-
-    const cont = document.querySelector('.container');
-    cont.style.marginTop = '10px';
-    cont.style.marginBottom = '5px';
-
-    const tabla = document.querySelector('.tabla');
-    tabla.style.width = '60%';
-    tabla.style.height = '300px';
-
-    const menu = document.getElementsByClassName('menu')[0];
-    menu.style.height = '310px';
-    menu.getElementsByTagName('h1')[0].style.fontSize = '15px';
-    menu.getElementsByClassName('options')[0].style.fontSize = '14px';
-    menu.getElementsByClassName('selected-option')[0].style.fontSize = '15px';
-    menu.getElementsByClassName('ejecutar-h1')[0].style.fontSize = '15px';
-    menu.getElementsByClassName('ejecutar-h1')[0].style.marginTop = '15px';
-    menu.getElementsByClassName('ejecutar-h1')[0].style.marginBottom = '5px';
-
-    const opcionesCont = document.querySelector('.options-container');
-    if (!opcionesCont) {
-        console.error('No se encontró el contenedor .options-container');
-    } else {
-        opcionesCont.style.marginLeft = '0';
-        opcionesCont.style.top = '0';
-        opcionesCont.style.display = 'flex';
-        opcionesCont.style.flexDirection = 'row';
-        opcionesCont.style.gap = '40px';
-
-        const buttons = document.querySelectorAll('.button-options');
-        for (let i = 0; i < buttons.length; i++) {
-            buttons[i].style.width = '100px';
-            buttons[i].style.marginTop = '0';
-            buttons[i].style.height = '40px';
-            buttons[i].style.fontSize = '10px';
-            if (i == 2) {
-                buttons[i].style.display = 'none';
-            }
-        }
-
-        // Crear el nuevo botón
-        const nuevoBoton = document.createElement('button');
-        nuevoBoton.style.width = '140px';
-        nuevoBoton.style.marginTop = '15px';
-        nuevoBoton.style.marginLeft = '50px';
-        nuevoBoton.style.height = '40px';
-        nuevoBoton.style.fontSize = '10px';
-        nuevoBoton.style.borderRadius = '50px';
-        nuevoBoton.style.backgroundColor = 'none'; // O 'transparent' si no deseas fondo
-        nuevoBoton.style.borderColor = '#d74edc';
-        nuevoBoton.style.boxShadow = '0 0 5px #9d40d7, 0 0 25px #d74edc';
-        nuevoBoton.style.cursor = 'pointer';
-        nuevoBoton.style.color = '#d74edc';
-        nuevoBoton.style.textShadow = '0 0 5px #d74edc';
-
-        // Crear el enlace dentro del nuevo botón
-        const enlace = document.createElement('a');
-        enlace.href = "https://github.com/Belceb45/Proyecto-Juego-de-la-Vida.git";
-        enlace.classList.add('repo');
-        enlace.textContent = "REPOSITORIO"; // Texto del enlace
-
-        // Crear el ícono de GitHub y agregarlo al enlace
-        const iconoGitHub = document.createElement('i');
-        iconoGitHub.classList.add('fa-brands', 'fa-github'); // Agregar clases de Font Awesome
-
-        // Agregar el enlace con el ícono dentro del botón
-        enlace.appendChild(iconoGitHub); // Añadir el ícono al enlace
-        nuevoBoton.appendChild(enlace); // Añadir el enlace al nuevo botón
-
-        // Insertar el nuevo botón después del contenedor de opciones
-        opcionesCont.insertAdjacentElement('afterend', nuevoBoton);
-    }
-
-    const explain = document.querySelector('.container-explain');
-    explain.style.marginLeft = '40px';
-    document.querySelector('.middle').style.marginLeft = '30px';
+    // Registrar evento para detectar cambio de orientación
+    window.addEventListener('orientationchange', manejarOrientacion);
 }
