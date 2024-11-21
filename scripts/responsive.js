@@ -82,7 +82,8 @@ function horizontal() {
         elements.titleNeon.style.cssText = window.originalStyles.titleNeon;
         elements.title.style.cssText = window.originalStyles.title;
     }
-
+    document.querySelector('body').style.display='flex';
+    document.querySelector('body').style.flexDirection='column';
     // Mostrar elementos que se ocultaron en vertical
     elements.playMusic.style.display = '';
     elements.container.style.display = '';
