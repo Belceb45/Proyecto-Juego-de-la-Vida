@@ -191,25 +191,69 @@ function esDispositivoMovil() {
     return /android|ipad|iphone|ipod|blackberry|windows phone|opera mini|webos/i.test(userAgent);
 }
 
-// Función principal para manejar la orientación
-function manejarOrientacion() {
-    // Pequeño retraso para asegurar que el DOM se ha actualizado
-    setTimeout(() => {
-        if (window.matchMedia("(orientation: portrait)").matches) {
-            console.log("Portrait");
-            vertical();
-        } else {
-            console.log("Landscape");
-            horizontal();
-        }
-    }, 100); // 100ms de retraso
+// Función para manejar la orientación en dispositivos móviles
+function manejarOrientacionMovil() {
+    if (window.matchMedia("(orientation: portrait)").matches) {
+        console.log("Portrait");
+        vertical();
+    } else {
+        console.log("Landscape");
+        horizontal();
+    }
 }
 
-// Ejecutar el código solo si es un dispositivo móvil
-if (esDispositivoMovil()) {
-    // Detectar orientación inicial y ejecutar la función correspondiente
-    manejarOrientacion();
+// Función para restaurar el diseño original (para PC)
+function restaurarDisenoOriginal() {
+    const elements = {
+        playMusic: document.getElementById('playMusic'),
+        container: document.querySelector('.container'),
+        containerExplain: document.querySelector('.container-explain'),
+        body: document.body,
+        titleNeon: document.querySelector('.title-neon'),
+        title: document.querySelector('.title-neon h2'),
+        footer: document.querySelector('footer')
+    };
 
-    // Registrar evento para detectar cambio de orientación
-    window.addEventListener('orientationchange', manejarOrientacion);
+    // Restaurar estilos originales
+    if (window.originalStyles) {
+        elements.body.style.cssText = window.originalStyles.body;
+        elements.titleNeon.style.cssText = window.originalStyles.titleNeon;
+        elements.title.style.cssText = window.originalStyles.title;
+    }
+
+    // Mostrar todos los elementos
+    elements.playMusic.style.display = '';
+    elements.container.style.display = '';
+    elements.containerExplain.style.display = '';
+    elements.footer.style.display = '';
+
+    // Ocultar la imagen de rotación si existe
+    const rotateImage = document.querySelector('.rotate-image');
+    if (rotateImage) {
+        rotateImage.remove();
+    }
+
+    // Restaurar el título original
+    elements.title.textContent = 'Juego de la Vida';
+
+    // Mostrar elementos específicos de la orientación horizontal
+    const horizontalElements = document.querySelectorAll('.horizontal-only');
+    horizontalElements.forEach(el => el.style.display = '');
 }
+
+// Función principal para manejar la disposición
+function manejarDisposicion() {
+    if (esDispositivoMovil()) {
+        manejarOrientacionMovil();
+        window.addEventListener('orientationchange', () => {
+            setTimeout(manejarOrientacionMovil, 100);
+        });
+    } else {
+        restaurarDisenoOriginal();
+        window.removeEventListener('orientationchange', manejarOrientacionMovil);
+    }
+}
+
+// Ejecutar la función principal al cargar la página y al cambiar el tamaño de la ventana
+window.addEventListener('load', manejarDisposicion);
+window.addEventListener('resize', manejarDisposicion);
