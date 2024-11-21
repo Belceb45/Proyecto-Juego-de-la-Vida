@@ -310,7 +310,7 @@ button#playMusic{
     }
 }
 
-@media (max-width: 930px) {
+@media (max-width: 830px) {
     body {
         display: flex;
         flex-direction: column;

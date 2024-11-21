@@ -102,11 +102,12 @@ function horizontal() {
     elements.container.style.marginTop = '10px';
     elements.container.style.marginBottom = '5px';
     elements.tabla.style.width = '60%';
-    elements.tabla.style.height = '300px';
+    elements.tabla.style.height = '250px';
 
     // Configurar el menú
     if (elements.menu) {
         elements.menu.style.height = '310px';
+        elements.menu.style.width = '310px';
         const menuElements = {
             title: elements.menu.querySelector('h1'),
             options: elements.menu.querySelector('.options'),
