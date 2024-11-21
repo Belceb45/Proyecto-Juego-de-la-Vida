@@ -4,6 +4,29 @@ function esDispositivoMovil() {
     return /android|ipad|iphone|ipod|blackberry|windows phone|opera mini|webos/i.test(userAgent);
 }
 
+// Ejecutar el código solo si es un dispositivo móvil
+if (esDispositivoMovil()) {
+    // Detectar orientación actual y ejecutar la función correspondiente
+    if (window.matchMedia("(orientation: portrait)").matches) {
+        vertical();
+    } else {
+        horizontal();
+    }
+
+    // Registrar evento para detectar cambio de orientación
+    window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+        const portrait = e.matches;
+
+        if (portrait) {
+            console.log("Portrait");
+            vertical();
+        } else {
+            console.log("Landscape");
+            horizontal();
+        }
+    });
+}
+
 // Función para manejar orientación vertical
 function vertical() {
     // Cambiar elementos visuales para orientación vertical
@@ -20,7 +43,7 @@ function vertical() {
     title.textContent = 'Para jugar debes rotar el celular';
     title.style.marginBottom = '0';
 
-    // Evitar agregar la imagen varias veces
+    // Verificar si la imagen ya está en el DOM antes de agregarla
     if (!document.querySelector('.rotate-image')) {
         const nuevaImagen = document.createElement('img');
         nuevaImagen.src = './images/rotate.png';
@@ -35,8 +58,11 @@ function vertical() {
 
 // Función para manejar orientación horizontal
 function horizontal() {
-    // Restaurar elementos visuales o personalizar para horizontal
     console.log("Restaurando para orientación horizontal...");
+
+    // Forzar reflujo (ejecutar una acción que fuerce la actualización de los estilos)
+    document.body.offsetHeight; // Esto fuerza el reflujo
+
     document.querySelector('.borde').style.height = '7px';
 
     const title = document.querySelector('.title-neon');
@@ -115,35 +141,8 @@ function horizontal() {
         // Insertar el nuevo botón después del contenedor de opciones
         opcionesCont.insertAdjacentElement('afterend', nuevoBoton);
     }
-}
 
-// Verificación de tamaño y orientación
-if (esDispositivoMovil()) {
-    const updateLayout = () => {
-        const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-        const screenWidth = window.innerWidth;
-        
-        // Si el ancho de la pantalla es mayor a 768px, lo tratamos como orientación horizontal
-        if (isPortrait) {
-            vertical();
-        } else {
-            horizontal();
-        }
-
-        // También puedes usar un rango de tamaños para gestionar comportamientos específicos
-        if (screenWidth > 768) {
-            console.log("Pantalla más ancha detectada. Modo horizontal.");
-        } else {
-            console.log("Pantalla más estrecha detectada. Modo vertical.");
-        }
-    };
-
-    // Ejecutar inicialmente para detectar el estado al cargar
-    updateLayout();
-
-    // Registrar evento para detectar cambio de orientación
-    window.matchMedia("(orientation: portrait)").addEventListener("change", updateLayout);
-
-    // Registrar evento para detectar cambio de tamaño
-    window.addEventListener("resize", updateLayout);
+    const explain = document.querySelector('.container-explain');
+    explain.style.marginLeft = '40px';
+    document.querySelector('.middle').style.marginLeft = '30px';
 }
