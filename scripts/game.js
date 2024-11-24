@@ -261,6 +261,7 @@ modal.innerHTML = `
                 <li>Una célula viva con 2 o 3 vecinas vivas sobrevive.</li>
                 <li>Una célula muerta con exactamente 3 vecinas vivas revive.</li>
                 <li>En cualquier otro caso, la célula muere o permanece muerta.</li>
+                <li>Si deseas saber más sobre el juego presiona aquí <a href="https://adntro.com/es/blog/noticias-corporativas/conway/?srsltid=AfmBOorztPxNYERmR8YbQrGdi5Cw4xYVtCk0IFSOjOSOA44B0m9KGCwz">gameOfTheLife</a>.</li>
             </ul>
             <p>Selecciona una opcion si quieres ver algún patrón ya establecido</br>Selecciona el cuadro "Ejecutar" para que inicie el programa o para detenerlo.</br>También hay
             un boton para limpiar el tablero de juego y una barra deslizadora para controlar la velocidad del juego</p>
