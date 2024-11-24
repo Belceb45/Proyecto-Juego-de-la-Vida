@@ -8,6 +8,7 @@ function cambiarPagina(paginaId) {
   document.getElementById(paginaId).classList.add('active');
 }
 
+
 const titulo = document.querySelector('.title-neon');
 titulo.style.marginTop = '5rem';
 
@@ -164,14 +165,14 @@ function contarVecinosVivos(i, j) {
 const checkbox = document.getElementById("myCheckbox"); // Referencia al checkbox
 // Evento para iniciar o detener el juego
 checkbox.addEventListener("change", function () {
-    if (checkbox.checked) {
-        const speed = parseInt(slider.value); // Lee la velocidad inicial del slider
-        gameInterval = setInterval(siguienteGeneracion, speed); // Inicia el juego
-        console.log(`Juego iniciado con velocidad: ${speed} ms`);
-    } else {
-        clearInterval(gameInterval); // Detén el juego
-        console.log("Juego detenido");
-    }
+  if (checkbox.checked) {
+    const speed = parseInt(slider.value); // Lee la velocidad inicial del slider
+    gameInterval = setInterval(siguienteGeneracion, speed); // Inicia el juego
+    console.log(`Juego iniciado con velocidad: ${speed} ms`);
+  } else {
+    clearInterval(gameInterval); // Detén el juego
+    console.log("Juego detenido");
+  }
 });
 
 const slider = document.getElementById("slider"); // Referencia al slider
@@ -179,13 +180,13 @@ let gameInterval; // Variable global para el intervalo del juego
 
 // Escucha los cambios en el slider
 slider.addEventListener("input", function () {
-    const speed = parseInt(slider.value); // Obtiene el valor del slider como entero
-    console.log(`Velocidad ajustada a: ${speed} ms`);
+  const speed = parseInt(slider.value); // Obtiene el valor del slider como entero
+  console.log(`Velocidad ajustada a: ${speed} ms`);
 
-    if (gameInterval && checkbox.checked) {
-        clearInterval(gameInterval); // Detén el intervalo actual
-        gameInterval = setInterval(siguienteGeneracion, speed); // Inicia con la nueva velocidad
-    }
+  if (gameInterval && checkbox.checked) {
+    clearInterval(gameInterval); // Detén el intervalo actual
+    gameInterval = setInterval(siguienteGeneracion, speed); // Inicia con la nueva velocidad
+  }
 });
 
 
@@ -219,14 +220,14 @@ function selectOption(pattern) {
     ],
     'Circle of Fire': [
       // Coordenadas de Circle of Fire
-      [11, 24],[11, 25],[11, 26],[11, 27],[11, 28],[10, 29],[11, 30],[12, 29],[9, 29], [8, 29], [7, 29], [13, 29],
-      [14, 29],[15, 29],[11, 31],[11, 32],[11, 33],[11, 34],[9, 31], [8, 31], [9, 32], [7, 32], [6, 30], [6, 28], [9, 27], [8, 27], [9, 33], [9, 26], [9, 25], [7, 26], [13, 27],
-      [14, 27],[13, 26],[13, 25],[15, 26],[16, 28],[16, 30],[14, 31],[13, 31],[13, 32],[13, 33],[15, 32]
-    
+      [11, 24], [11, 25], [11, 26], [11, 27], [11, 28], [10, 29], [11, 30], [12, 29], [9, 29], [8, 29], [7, 29], [13, 29],
+      [14, 29], [15, 29], [11, 31], [11, 32], [11, 33], [11, 34], [9, 31], [8, 31], [9, 32], [7, 32], [6, 30], [6, 28], [9, 27], [8, 27], [9, 33], [9, 26], [9, 25], [7, 26], [13, 27],
+      [14, 27], [13, 26], [13, 25], [15, 26], [16, 28], [16, 30], [14, 31], [13, 31], [13, 32], [13, 33], [15, 32]
+
     ],
     'Quadpole': [
       // Coordenadas de Quadpole
-      [8, 23],[9, 23],[8, 24],[9, 25],[11, 25],[11, 27],[13, 27],[14, 28],[14, 29],[13, 29]
+      [8, 23], [9, 23], [8, 24], [9, 25], [11, 25], [11, 27], [13, 27], [14, 28], [14, 29], [13, 29]
 
     ],
   };
@@ -246,3 +247,49 @@ function selectOption(pattern) {
 }
 
 
+//Boton de explicacion
+const body = document.body;
+
+// Crear dinámicamente el modal
+const modal = document.createElement("div");
+modal.classList.add("modal");
+modal.innerHTML = `
+        <div class="modal-content">
+            <h2>¿Qué es el Juego de la Vida?</h2>
+            <p>El Juego de la Vida, diseñado por John Conway, es un simulador basado en reglas que emula la evolución de células en una cuadrícula. Cada célula puede estar viva o muerta y cambia de estado en cada generación según estas reglas:</p>
+            <ul>
+                <li>Una célula viva con 2 o 3 vecinas vivas sobrevive.</li>
+                <li>Una célula muerta con exactamente 3 vecinas vivas revive.</li>
+                <li>En cualquier otro caso, la célula muere o permanece muerta.</li>
+            </ul>
+            <p>Selecciona una opcion si quieres ver algún patrón ya establecido</br>Selecciona el cuadro "Ejecutar" para que inicie el programa o para detenerlo.</br>También hay
+            un boton para limpiar el tablero de juego y una barra deslizadora para controlar la velocidad del juego</p>
+            <button class="close-modal">Cerrar</button>
+        </div>
+    `;
+body.appendChild(modal);
+
+// Referencias
+const explanationButton = document.querySelector(".button-options.min-margin");
+const closeButton = modal.querySelector(".close-modal");
+
+// Mostrar/ocultar el modal al presionar el botón
+explanationButton.addEventListener("click", () => {
+  if (modal.style.display === "none" || !modal.style.display) {
+    modal.style.display = "flex"; // Mostrar modal
+  } else {
+    modal.style.display = "none"; // Ocultar modal
+  }
+});
+
+// Cerrar el modal al presionar el botón de cerrar
+closeButton.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Cerrar el modal al hacer clic fuera de su contenido
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});

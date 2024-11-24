@@ -697,3 +697,70 @@ button#playMusic{
 	box-shadow: 0 0 0 25px rgba(184,76,188,.2);
 }
 
+/*Seccion de boton de explicacion*/
+/* Estilos del modal */
+/* Estilos del modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none; /* Ocultamos el modal inicialmente */
+    font-family: 'Nunito', sans-serif; /* Fuente personalizada */
+    
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 800px; /* Mayor ancho */
+    width: 90%; /* Adaptable a pantallas pequeñas */
+    text-align: center;
+    border: 4px solid #d236c8; /* Bordes morado-rosa */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #d236c8; /* Título en morado-rosa */
+    font-size: 3rem;
+}
+
+.modal-content p {
+    color: #333; /* Texto en negro oscuro */
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-top: 40px;
+}
+
+.modal-content ul {
+    color: #333;
+    font-size: 1.4rem;
+    text-align: left; /* Alinear lista a la izquierda */
+    margin: 20px auto;
+    padding: 0 20px;
+    list-style: square; /* Estilo de lista */
+}
+
+.modal-content .close-modal {
+    background: #d236c8;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.modal-content .close-modal:hover {
+    background: #a01d91; /* Oscurecer color al pasar el mouse */
+}
